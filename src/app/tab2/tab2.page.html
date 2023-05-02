@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 2
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list *ngIf="listaSeries">
+    <ion-item-sliding *ngFor="let series of listaSeries" [class]="series.avaliacao > 5 ? 'verde' : series.avaliacao > 3 ? 'amarelo' : 'vermelho'">
+      <ion-thumbnail slot="start">
+        <img *ngIf="series.cartaz" src="{{series.cartaz}}" [class]="series.favorito === true ? 'favorito' : '' "/>
+        <ion-icon *ngIf="!series.cartaz" name="videocam-off"></ion-icon>
+      </ion-thumbnail>
+      <div class="infos">
+        <h2 class="title">{{series.nome}}</h2>
+        <h3 class="lancamento">{{series.lancamento}}</h3>
+        <h3 class="temporada">Temporada(s): {{series.temporadas}}</h3>
+        <ion-list *ngFor="let genero of series.generos">
+          <ion-item class="genero">
+            {{genero}}
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="assistir">
+        <h3 class="streming">{{series.assistir}}</h3>
+      </div>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
