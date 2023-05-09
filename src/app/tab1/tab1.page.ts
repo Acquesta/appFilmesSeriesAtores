@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IFilme } from '../model/IFilme';
+import { NavigationExtras, Router} from '@angular/router'
+import { AlertController, ToastButton, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -8,7 +10,9 @@ import { IFilme } from '../model/IFilme';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(public router: Router,
+                  public alertController: AlertController,
+                  public toastController: ToastController) {}
 
   listaFilmes: IFilme[] = [
     {
@@ -59,5 +63,9 @@ export class Tab1Page {
       favorito:false
     }
   ];
+  exibirFilme(filme: IFilme){
+    const navigationExtras: NavigationExtras = {state:{paramFilme:filme}};
+    this.router.navigate(['filme-detalhe'], navigationExtras)
+  }
 
 }
