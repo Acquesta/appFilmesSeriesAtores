@@ -11,10 +11,10 @@
   <ion-list *ngIf="listaFilmes">
 
     <ion-item-sliding *ngFor="let filme of listaFilmes">
-      <ion-item lines="full" (click)="exibirFilme(filme)" >
+      <ion-item lines="full" (click)="exibirFilme(filme)">
 
-        <ion-thumbnail slot="start">
-          <img *ngIf="filme.cartaz" src="{{filme.cartaz}}" />
+        <ion-thumbnail slot="start" class="img" >
+          <img *ngIf="filme.cartaz" src="{{filme.cartaz}}"/>
           <ion-icon *ngIf="!filme.cartaz" name="videocam-off"></ion-icon>
         </ion-thumbnail>
 
@@ -36,7 +36,7 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="primary" >
+        <ion-item-option color="primary" (click)="exibirAlertaFavorito(filme)">
           <ion-icon slot="icon-only" name="star"></ion-icon>
         </ion-item-option>
       </ion-item-options>
